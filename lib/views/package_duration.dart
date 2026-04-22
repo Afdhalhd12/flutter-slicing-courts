@@ -1,9 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sports/views/order_summary.dart';
+import 'package:sports/widgets/card_duration.dart';
 
 class PackageDuration extends StatelessWidget {
-  const PackageDuration({super.key});
+   final List<Map<String, dynamic>> daftarPaket = [
+    {
+      'duration' : '1 Hour',
+      'price' : 'Rp. 50.000',
+      'subtitleL' : 'Good For Training',
+      'subtitleR' : "Per Session",
+    },
+
+    {
+      'duration' : '2 Hour',
+      'price' : 'Rp. 85.000',
+      'subtitleL' : 'Comfortable For Training',
+      'subtitleR' : "Per Session",
+    },
+
+    {
+      'duration' : '3 Hour',
+      'price' : 'Rp. 125.000',
+      'subtitleL' : 'Perfect For Training',
+      'subtitleR' : "Per Session",
+    }
+
+   ];
+
+   PackageDuration({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,63 +46,17 @@ class PackageDuration extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: ListView.separated(
-          itemCount: 4,
+          itemCount: daftarPaket.length,
           separatorBuilder: (context, index) {
             return SizedBox(height: 10);
           },
           itemBuilder: (context, index) {
-            return InkWell(
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => OrderSummary()));
-              },
-              child: Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(color: Colors.grey, width: 2),
-                ),
-                padding: EdgeInsets.all(15),
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          '1 Hour',
-                          style: GoogleFonts.poppins(
-                            fontWeight: FontWeight.w600,
-                            
-                          ),
-                        ),
-                        Spacer(),
-                        Text(
-                          'Rp. 50.000',
-                          style: GoogleFonts.poppins(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 16,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 5),
-                    Row(
-                      children: [
-                        Text(
-                          'Perfect for training',
-                          style: GoogleFonts.poppins(),
-                        ),
-                        Spacer(),
-                        Text(
-                          'Per session',
-                          style: GoogleFonts.poppins(
-                            fontWeight: FontWeight.w300,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+            final paket = daftarPaket[index];
+            return CardDuration(
+              duration: paket['duration'],
+              price: paket['price'],
+              subtitleL: paket['subtitleL'],
+              subtitleR: paket['subtitleR'],
             );
           },
         ),

@@ -21,6 +21,10 @@ class BoardingPage extends StatelessWidget {
                 width: double.infinity,
                 height: 300,
                 decoration: BoxDecoration(
+                  image: DecorationImage(
+                        image: NetworkImage("https://cdn.dribbble.com/userupload/10093106/file/original-b6dd549465ee5871df173b836c97c07e.jpg"),
+                        fit: BoxFit.cover,
+                        ), 
                   borderRadius: BorderRadius.circular(30),
                   color: Colors.grey,
                 ),
